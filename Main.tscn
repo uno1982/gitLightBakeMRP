@@ -4,7 +4,7 @@
 [ext_resource type="LightmapGIData" uid="uid://lrl6xf8gwl4u" path="res://Main.lmbake" id="2_r0du0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
-lightmap_size_hint = Vector2i(64, 64)
+lightmap_size_hint = Vector2i(14, 21)
 add_uv2 = true
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fos0i"]
