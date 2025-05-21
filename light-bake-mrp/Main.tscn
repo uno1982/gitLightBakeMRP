@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://5kfqomkjrhis"]
+
+[ext_resource type="Texture2D" uid="uid://co3upj4p8pae8" path="res://autumn_field_puresky_1k.exr" id="1_uu6xs"]
+[ext_resource type="LightmapGIData" uid="uid://lrl6xf8gwl4u" path="res://Main.lmbake" id="2_r0du0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm0pq"]
+lightmap_size_hint = Vector2i(64, 64)
+add_uv2 = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fos0i"]
+panorama = ExtResource("1_uu6xs")
+
+[sub_resource type="Sky" id="Sky_3dxm6"]
+sky_material = SubResource("PanoramaSkyMaterial_fos0i")
+
+[sub_resource type="Environment" id="Environment_lgr22"]
+background_mode = 2
+sky = SubResource("Sky_3dxm6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_uu6xs"]
+lightmap_size_hint = Vector2i(1024, 1024)
+add_uv2 = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.65565, 0, 0, 0, 1, -25.554, 1.78494, 0)
+mesh = SubResource("BoxMesh_cm0pq")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.65565, 0, 0, 0, 1, -25.554, 1.78494, 13.8877)
+mesh = SubResource("BoxMesh_cm0pq")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lgr22")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.780673, -0.168092, -0.601909, 0.540969, 0.663991, 0.516205, 0.312892, -0.728602, 0.609293, 0, 2.98314, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 32.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7013, 0.957218, 0)
+mesh = SubResource("BoxMesh_cm0pq")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.825272, 0, 0, 0)
+quality = 2
+bounces = 8
+directional = true
+shadowmask_mode = 1
+generate_probes_subdiv = 3
+light_data = ExtResource("2_r0du0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1897, 1.9732, -0.362018)
+light_energy = 5.11
+shadow_enabled = true
+omni_range = 9.207
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(191.619, 0, 0, 0, 1, 0, 0, 0, 151.728, 0, 0, 0)
+mesh = SubResource("BoxMesh_uu6xs")
